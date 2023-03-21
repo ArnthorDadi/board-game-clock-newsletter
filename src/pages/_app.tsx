@@ -5,6 +5,14 @@ import { SessionProvider } from "next-auth/react";
 import { api } from "@src/utils/api";
 
 import "@src/styles/globals.css";
+import { Layout } from "@src/components/layout/Layout";
+
+export enum Page {
+  Home = "/",
+  EmailSubscribed = "/email-subscribed",
+  VerificationEmailSent = "/verification-email-sent",
+  SubscribeEmail = "/subscribe-email",
+}
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -12,7 +20,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </SessionProvider>
   );
 };

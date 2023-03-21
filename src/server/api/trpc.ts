@@ -22,6 +22,7 @@ import { prisma } from "@src/server/db";
 
 type CreateContextOptions = {
   session: Session | null;
+  emailService: typeof EmailService;
 };
 
 /**
@@ -36,6 +37,7 @@ type CreateContextOptions = {
  */
 const createInnerTRPCContext = (opts: CreateContextOptions) => {
   return {
+    emailService: EmailService,
     session: opts.session,
     prisma,
   };
@@ -55,6 +57,7 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
 
   return createInnerTRPCContext({
     session,
+    emailService: EmailService
   });
 };
 
@@ -65,6 +68,7 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
  */
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
+import { EmailService } from "@src/server/utils/EmailService";
 
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
