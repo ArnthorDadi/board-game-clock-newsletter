@@ -7,6 +7,7 @@ import { Button } from "@src/components/buttons/Button";
 import { Page } from "@src/pages/_app";
 import { validateEmail } from "@src/utils/validateEmail";
 import { ReCaptchaProvider, useReCaptcha } from "next-recaptcha-v3";
+import { sleep } from "@src/server/utils/Utilites";
 
 const Home: NextPage = () => {
   const sendValidationEmail = api.subscription.sendValidationEmail.useMutation({
@@ -40,6 +41,7 @@ const Home: NextPage = () => {
     try {
       const token = await executeRecaptcha("validate_email");
       await sendValidationEmail.mutate({ email, token });
+      await sleep(2000);
       await router.push(Page.VerificationEmailSent);
     } catch (e) {
       console.error("sendValidationEmail", { e });
