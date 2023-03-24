@@ -48,16 +48,15 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className="flex flex-1 flex-col items-center justify-center gap-12">
-        <h1 className="text-center text-5xl font-extrabold  sm:text-[3rem]">
+      <div className="flex flex-1 flex-col items-center justify-center gap-24">
+        <h1 className="text-center text-5xl font-extrabold sm:text-[3rem]">
           Subscribe to the{"  "}
           <span className="text-primary">Board game clock</span> newsletter!
         </h1>
-        <div className={"flex max-w-sm flex-col gap-4"}>
+        <div className={"flex max-w-sm flex-col gap-12"}>
           <p className={"text-center text-base "}>
-            Subscribe to the newsletter and receive weekly updates on{" "}
-            <span className="text-primary">board game clock</span> project we
-            are starting.
+            Join our community of board game enthusiasts and get weekly updates
+            on <span className="text-primary">Board Game Clock</span>!
           </p>
           <form
             onSubmit={onSubmitSubscribableEmail}

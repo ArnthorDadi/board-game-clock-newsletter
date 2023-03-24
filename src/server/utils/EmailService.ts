@@ -17,6 +17,8 @@ export class EmailService {
       throw new Error("EmailService - Invalid email!");
     }
 
+    console.log("email", { email });
+
     await emailClient
       .sendEmail({
         Destination: {
@@ -34,7 +36,7 @@ export class EmailService {
             Data: "Confirm Your Subscription to the Board Game Clock Newsletter",
           },
         },
-        Source: "arnthordj+boardgameclocknewsletter@gmail.com",
+        Source: "theboardgameclock+no-reply@gmail.com",
       })
       .promise()
       .then(async (data) => {

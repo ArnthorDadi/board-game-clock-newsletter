@@ -1,94 +1,117 @@
 import { Page } from "@src/pages/_app";
 
 export function getVerificationEmail(email: string) {
-  return (
-    "<!DOCTYPE html>\n" +
-    '<html lang="en">\n' +
-    "  <head>\n" +
-    '    <meta charset="utf-8" />\n' +
-    "    <title>Confirm Your Subscription</title>\n" +
-    "  </head>\n" +
-    "  <body\n" +
-    '    style="\n' +
-    "      font-family: Arial, sans-serif;\n" +
-    "      font-size: 16px;\n" +
-    "      line-height: 1.5;\n" +
-    "      color: #b7b6b6;\n" +
-    "      max-width: 600px;\n" +
-    "      margin: 0 auto;\n" +
-    "      padding: 20px;\n" +
-    "\n" +
-    "      border: 5px solid black;\n" +
-    "      border-radius: 5px;\n" +
-    '    "\n' +
-    "  >\n" +
-    "    <div\n" +
-    '      style="\n' +
-    "        border-radius: 5px;\n" +
-    "        padding: 20px 40px;\n" +
-    "        border: 3px solid black;\n" +
-    "        background-color: rgb(45, 58, 87);\n" +
-    '      "\n' +
-    "    >\n" +
-    "      <h1\n" +
-    '        style="text-align: center; color: white; font-weight: bold;\n' +
-    "        margin-top: 0;\n" +
-    '        margin-bottom: 10px;"\n' +
-    "      >\n" +
-    "        Confirm Your Subscription to the\n" +
-    '        <span style="color: hsl(280, 100%, 70%)">Board Game Clock</span>\n' +
-    "        Newsletter\n" +
-    "      </h1>\n" +
-    '      <div style="width: 100%; height: 1px; background-color: #333"></div>\n' +
-    "      <p>\n" +
-    "        Thank you for your interest in subscribing to our newsletter for updates\n" +
-    "        on the development of our\n" +
-    '        <span style="color: hsl(280, 100%, 70%)">Board Game Clock</span> web\n' +
-    "        application. To complete your subscription, please confirm your email\n" +
-    "        address by clicking the verification link below:\n" +
-    "      </p>\n" +
-    '      <p style="text-align: center">\n' +
-    "        <a\n" +
-    '          style="\n' +
-    "            display: inline-block;\n" +
-    "            padding: 10px 20px;\n" +
-    "            background-color: #007bff;\n" +
-    "            color: #fff;\n" +
-    "            border-radius: 20px;\n" +
-    "            text-decoration: none;\n" +
-    "            transition: background-color 0.3s ease-in-out;\n" +
-    '          "\n' +
-    `          href="http://localhost:3000/${Page.SubscribeEmail}?email=${email}"\n` +
-    '          target="_blank"\n' +
-    '          class="button"\n' +
-    "          >Click here to confirm your email</a\n" +
-    "        >\n" +
-    "      </p>\n" +
-    "      <p>\n" +
-    "        Once you click on the link, you will be redirected to a confirmation\n" +
-    "        page confirming that you have successfully subscribed to our newsletter.\n" +
-    "      </p>\n" +
-    "      <p>\n" +
-    "        By subscribing, you will be the first to receive news and updates on our\n" +
-    "        app development progress, new features, and beta testing opportunities.\n" +
-    "      </p>\n" +
-    "      <p>\n" +
-    "        Please note that your subscription will only be activated once you have\n" +
-    "        clicked on the verification link.\n" +
-    "      </p>\n" +
-    "      <p>\n" +
-    "        Thank you again for your interest in our project, and we look forward to\n" +
-    "        sharing our progress with you.\n" +
-    "      </p>\n" +
-    "      <p>\n" +
-    "        Best regards,<br /><a\n" +
-    '          href="https://arnthordadi.github.io/"\n' +
-    '          style="color: #007bff; text-decoration: none; /*text-decoration: underline;*/"\n' +
-    "          >Arnthor D.J.</a\n" +
-    "        >\n" +
-    "      </p>\n" +
-    "    </div>\n" +
-    "  </body>\n" +
-    "</html>\n"
-  );
+  return `<!DOCTYPE html>
+<html>
+  <head>
+    <title>Confirm your subscription to Board Game Clock newsletter</title>
+  </head>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #aaa;
+      background-color: #bbbbbb;
+      padding: 20px;
+    "
+  >
+    <div
+      style="
+        background-color: #2c2c2c;
+        border: 5px solid black;
+        padding: 20px;
+        max-width: 600px;
+        margin: auto;
+      "
+    >
+      <div style="border: 2px solid black; padding: 20px">
+        <h1
+          style="
+            text-align: center;
+            font-size: 28px;
+            font-weight: normal;
+            margin-top: 0;
+            color: #fff;
+          "
+        >
+          Confirm your subscription to
+          <span style="color: #63bbff">Board Game Clock</span> newsletter!
+        </h1>
+
+        <p style="margin-bottom: 20px">Hello, Board Game Enthusiast!</p>
+
+        <p style="margin-bottom: 20px">
+          Thank you for your interest in the Board Game Clock newsletter!
+        </p>
+
+        <p style="margin-bottom: 20px">
+          Our newsletter is designed to keep you updated on the latest
+          development progress of our board game timer site. We'll be sharing
+          new features, bug fixes, user feedback, community news, and new
+          releases related to board games. You can expect to receive periodic
+          emails from us with all the latest updates.
+        </p>
+
+        <p style="margin-bottom: 0; padding-bottom: 0">
+          To start receiving our newsletter, please click on the following link
+          to confirm your subscription.
+        </p>
+
+        <p style="margin-bottom: 20px; text-align: center">
+          <a
+            target="_blank"
+            href="https://board-game-clock-newsletter.vercel.app/subscribe-email?email=${email}"
+            style="
+              color: #fff;
+              text-decoration: none;
+              background-color: #0093ff;
+              padding: 10px 20px;
+              border-radius: 5px;
+              display: inline-block;
+            "
+            >Confirm Subscription</a
+          >
+        </p>
+        
+        <!--<p>
+          To stay up-to-date on all of our latest updates, be sure to check out
+          our
+          <a
+            href="[Insert Blog Link Here]"
+            target="_blank"
+            style="color: #0093ff; text-decoration: none"
+            >blog site</a
+          >
+          where you can find all of our latest news and features.
+        </p>-->
+
+        <p style="margin-bottom: 20px">
+          Thank you for your interest in Board Game Clock, and we look forward
+          to keeping you informed on our progress and new releases!
+        </p>
+
+        <div style="height: 2px; background-color: #525252"></div>
+        <p style="text-align: center; color: white">
+          If you did not subscribe to our newsletter, you can simply ignore this
+          email, and you will not receive any further messages from us.
+        </p>
+        <div
+          style="height: 2px; background-color: #525252; margin-bottom: 20px"
+        ></div>
+
+        <p style="padding: 0; margin: 0">
+          Best regards, <br />
+          <a
+            href="https://arnthordadi.github.io/"
+            target="_blank"
+            style="color: #0093ff; text-decoration: none"
+            >Arnthor Dadi</a
+          >
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
+`;
 }

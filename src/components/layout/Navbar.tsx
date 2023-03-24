@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Navbar: FC = () => {
   return (
-    <nav className="flex flex-wrap items-center justify-between">
+    <nav className="z-10 flex flex-wrap items-center justify-between">
       <div className={"w-full justify-between p-6"}>
         <div className="flex flex-shrink-0 pr-6">
           <Link

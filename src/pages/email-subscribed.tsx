@@ -8,7 +8,7 @@ const SuccessPage: NextPage = () => {
       </h1>
       <p className={"text-2xl text-white text-center"}>
         ...to the{" "}
-        <span className={"text-[hsl(280,100%,70%)]"}>board game clock</span>{" "}
+        <span className={"text-primary"}>board game clock</span>{" "}
         newsletter!
       </p>
     </div>

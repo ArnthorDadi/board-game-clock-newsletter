@@ -12,7 +12,7 @@ const config = {
   theme: {
     colors: {
       ...colors,
-      primary: "hsl(280,100%,70%)",
+      primary: "#63bbff",
     },
     extend: {
       fontFamily: {
