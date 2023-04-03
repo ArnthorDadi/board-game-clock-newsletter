@@ -1,5 +1,5 @@
 import { type NextPage } from "next";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useCallback, useState } from "react";
 import { useRouter } from "next/router";
 import { api } from "@src/utils/api";
 import { Input } from "@src/components/form/Input";
@@ -20,6 +20,7 @@ const Home: NextPage = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [isSendingEmail, setIsSendingEmail] = useState(false);
 
   const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (emailError) {
@@ -29,24 +30,31 @@ const Home: NextPage = () => {
   };
 
   // Todo: red email alert / validation
-  const onSubmitSubscribableEmail = async (
-    event: FormEvent<HTMLFormElement>
-  ) => {
-    event.preventDefault();
-    if (!validateEmail(email)) {
-      setEmailError("Invalid email!");
-      return;
-    }
+  const onSubmitSubscribableEmail = useCallback(
+    async (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      if (!validateEmail(email)) {
+        setEmailError("Invalid email!");
+        return;
+      }
 
-    try {
-      const token = await executeRecaptcha("validate_email");
-      await sendValidationEmail.mutate({ email, token });
-      await sleep(2000);
-      await router.push(Page.VerificationEmailSent);
-    } catch (e) {
-      console.error("sendValidationEmail", { e });
-    }
-  };
+      if (isSendingEmail) {
+        return;
+      }
+
+      try {
+        setIsSendingEmail(true);
+        const token = await executeRecaptcha("validate_email");
+        await sendValidationEmail.mutate({ email, token });
+        await sleep(2000);
+        await router.push(Page.VerificationEmailSent);
+      } catch (e) {
+        console.error("sendValidationEmail", { e });
+      }
+      setIsSendingEmail(false);
+    },
+    [email, executeRecaptcha, isSendingEmail, router, sendValidationEmail]
+  );
 
   return (
     <>
@@ -82,7 +90,13 @@ const Home: NextPage = () => {
                   <p className="text-sm text-red-400">*{emailError}</p>
                 ) : null}
               </div>
-              <Button variant={"default"} size={"lg"} fill={"sm"} type="submit">
+              <Button
+                variant={"default"}
+                size={"lg"}
+                fill={"sm"}
+                type="submit"
+                isLoading={isSendingEmail}
+              >
                 Subscribe
               </Button>
             </div>

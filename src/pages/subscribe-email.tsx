@@ -26,6 +26,15 @@ const VerifiedEmail: NextPage = () => {
 
   const [verifyStep, setVerifyStep] = useState(VerifyStep.GettingEmail);
   const [email, setEmail] = useState<string>(routerEmail as string);
+  const [hasBeenFiveSeconds, setHasBeenFiveSeconds] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHasBeenFiveSeconds(true);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const haveSendVerificationEmailToEmailResponse =
     api.subscription.haveSendVerificationEmailToEmail.useQuery({
@@ -49,13 +58,19 @@ const VerifiedEmail: NextPage = () => {
       setVerifyStep(VerifyStep.EmailIsSubscribed);
       await router.push(Page.EmailSubscribed);
     };
-    if (!isRouterEmail || !isRouterEmailInBackend) {
+    if (!!hasBeenFiveSeconds && (!isRouterEmail || !isRouterEmailInBackend)) {
       setVerifyStep(VerifyStep.EmailNotFound);
     } else if (isRouterEmail && isRouterEmailInBackend) {
       setVerifyStep(VerifyStep.SavingEmail);
       subscribeVerifiedEmail();
     }
-  }, [isRouterEmail, isRouterEmailInBackend]);
+  }, [
+    hasBeenFiveSeconds,
+    haveSendVerificationEmailToEmailResponse.data,
+    isRouterEmail,
+    isRouterEmailInBackend,
+    routerEmail,
+  ]);
 
   return (
     <div className={"flex flex-1 items-center justify-center"}>

@@ -8,7 +8,7 @@ const VerificationEmailSent: NextPage = () => {
   return (
     <div className={"flex flex-1 flex-col items-center justify-center gap-12"}>
       <h1
-        className={"mb-8 text-center text-5xl  font-extrabold sm:text-[3rem]"}
+        className={"mb-8 text-center text-3xl font-extrabold sm:text-[2.5rem] md:text-[3rem]"}
       >
         Thank You for Subscribing to the{" "}
         <span className={"text-primary"}>Board Game Clock</span> Newsletter!
