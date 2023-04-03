@@ -13,7 +13,7 @@ const Navbar: FC = () => {
             className={"flex cursor-pointer flex-row items-center gap-4"}
           >
             <FaEnvelope color={"white"} />
-            <p className="text-xl font-semibold tracking-tight">
+            <p className="text-lg font-semibold tracking-tight">
               <span className="text-primary">Board Game Clock</span> Newsletter
             </p>
           </Link>

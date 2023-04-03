@@ -50,13 +50,13 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className="flex flex-1 flex-col items-center justify-center gap-24">
-        <h1 className="text-center text-5xl font-extrabold sm:text-[3rem]">
+      <div className="flex flex-1 flex-col items-center justify-center gap-16">
+        <h1 className="text-center text-3xl font-extrabold sm:text-[2.5rem] md:text-[3rem]">
           Subscribe to the{"  "}
           <span className="text-primary">Board game clock</span> newsletter!
         </h1>
-        <div className={"flex max-w-sm flex-col gap-12"}>
-          <p className={"text-center text-base "}>
+        <div className={"flex max-w-sm flex-col gap-8"}>
+          <p className={"text-center text-[0.95rem] sm:text-base"}>
             Join our community of board game enthusiasts and get weekly updates
             on <span className="text-primary">Board Game Clock</span>!
           </p>

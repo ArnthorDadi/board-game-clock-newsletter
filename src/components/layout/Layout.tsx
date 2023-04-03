@@ -26,17 +26,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
             {children}
           </main>
           <Footer />
-          <div
-            className={
-              "absolute inset-0 z-[2] bg-[url('https://cdn.dribbble.com/userupload/3274746/file/original-c4c6dc1fbc4277fb6159b83edc7d2ef9.png?compress=1&resize=1024x576&vertical=center')] bg-cover bg-center bg-no-repeat opacity-80"
-            }
-          />
         </div>
-        <div
-          className={
-            "absolute inset-0 z-[1] bg-[url('https://cdn-icons-png.flaticon.com/512/1067/1067453.png?w=1380&t=st=1679660098~exp=1679660698~hmac=e0216f417ada4100bba53094044b71218d72414b1720c18edf4e28c211f5600d')] bg-center bg-repeat opacity-20"
-          }
-        />
       </div>
     </>
   );
