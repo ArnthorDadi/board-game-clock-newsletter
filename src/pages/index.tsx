@@ -46,7 +46,6 @@ const Home: NextPage = () => {
         setIsSendingEmail(true);
         const token = await executeRecaptcha("validate_email");
         await sendValidationEmail.mutate({ email, token });
-        await sleep(2000);
         await router.push(Page.VerificationEmailSent);
       } catch (e) {
         console.error("sendValidationEmail", { e });

@@ -25,6 +25,7 @@ const server = z.object({
   AWS_SECRET_ACCESS_KEY: z.string(),
   NEXT_PUBLIC_RECAPTCHA_SITE_KEY: z.string(),
   RECAPTCHA_SECRET_KEY: z.string(),
+  NEXT_PUBLIC_GOOGLE_ANALYTICS: z.string(),
 });
 
 /**
@@ -53,6 +54,7 @@ const processEnv = {
   AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
   NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
   RECAPTCHA_SECRET_KEY: process.env.RECAPTCHA_SECRET_KEY,
+  NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
 };
 
 // Don't touch the part below
